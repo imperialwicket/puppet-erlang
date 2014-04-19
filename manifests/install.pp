@@ -1,8 +1,8 @@
 # == Class erlang::install
 #
 class erlang::install {
-  
-  class erlang::common_packages { $erlang::packages: }
+
+  erlang::common_package { $erlang::packages: }
 
   Exec {
     path    => ['/bin','/sbin','/usr/bin','/usr/sbin'],
