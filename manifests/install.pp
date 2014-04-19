@@ -1,9 +1,8 @@
 # == Class erlang::install
 #
 class erlang::install {
-  package { $erlang::packages:
-    ensure => present,
-  }
+  
+  class erlang::common_packages { $erlang::packages: }
 
   Exec {
     path    => ['/bin','/sbin','/usr/bin','/usr/sbin'],
@@ -11,7 +10,7 @@ class erlang::install {
 
   exec {
     "curl ${erlang::version}":
-      command => "curl -s http://www.erlang.org/download/otp_src_${erlang::version}.tar.gz",
+      command => "curl -O -s http://www.erlang.org/download/otp_src_${erlang::version}.tar.gz",
       cwd     => '/usr/src',
       creates => "/usr/src/otp_src_${erlang::version}.tar.gz",
       require => Package[$erlang::packages];
