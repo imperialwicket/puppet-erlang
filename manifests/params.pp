@@ -4,7 +4,7 @@
 # It sets variables according to platform
 #
 class erlang::params {
-  $version = 'R16B03-1'
+  $version = '17.0'
 
   case $::osfamily {
     'Debian','Ubuntu': {
